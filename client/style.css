@@ -1,0 +1,280 @@
+html{
+    background-color: bisque;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: bisque;
+    font-family: 'Montserrat', sans-serif;
+}
+
+div{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#cart-container img{
+    aspect-ratio: 1;
+    width: 70px;
+    padding: 1px;
+    filter: saturate(10%);
+    border-radius: 100%;
+    transition: filter 0.2s ease-in;
+}
+
+#cart-container img:hover{
+    padding:0px;
+    border: 1px solid aqua;
+    filter: saturate(70%);
+}
+
+
+#page-title{
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#page-title-div{
+    display: block;
+    flex-direction: column;
+    margin-bottom: 500px;
+}
+
+.page-title{
+    margin: 10px;
+}
+
+#page-title-div h2{
+    padding-left: 10px;
+}
+
+h1{
+    font-size: 100px;
+}
+
+.content-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#product-section{
+    display:flex;
+    flex-direction: column;
+}
+
+input{
+    border-radius: 60px;
+    width: 800px;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#sort-options{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    max-width: 250px;
+}
+.checkbox{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.checkbox-div{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    width: 300px;
+}
+#tablets-box-div label{
+    margin-right: 32px;
+}
+
+#products-sort{
+    display: flex;
+    flex-direction: row;
+}
+
+#products-display{
+    flex-wrap: wrap;
+    gap:150px;
+}
+
+.small-gap{
+    gap:40px !important;
+}
+
+#add-to-cart{
+    max-width: 170px;
+    max-height: 50px;
+}
+
+.product-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 200px;
+    height: 340px;
+}
+
+.product-name{
+    font-size:20px;
+}
+
+.product-img{
+    max-width: 200px;
+}
+
+.none{
+    display: none !important;
+}
+
+.product-page{
+    display: flex;
+    flex-direction: column;
+}
+
+.bigger-text{
+    font-size:40px;
+}
+
+.info-div{
+    display: flex;
+    flex-direction: column;
+    padding-left: 400px;
+}
+
+.product-container{
+    gap:100px;
+}
+
+button{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    display: inline-block;
+    max-width: 200px;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#page-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#shopping-cart-container{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+#cart-products-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    gap:30px;
+}
+
+.cart-product-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 100px;
+    overflow: hidden;
+    width: 300px;
+}
+
+.cart-product-img-div{
+    display: inline-block;
+    width: 100px;
+    height: 110px;
+}
+
+.cart-product-img{
+    width: 80%;
+    height: auto;
+}
+
+.cart-product-name{
+    text-align: left;
+}
+
+.cart-product-name{
+    text-align: left;
+}
+
+
+.cart-product-info-div{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 15px;
+    width: 70%;
+    height: 100%;
+}
+
+#cart-price-container{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-left: 100px;
+    
+}
+
+.cart-total-delete-div{
+    gap: 100px;
+}
+
+.cart-delete-img{
+    max-width: 100px;
+    max-height: auto;
+}
+
+@media screen and (max-width: 800px) {
+    #cart-price-container{
+        padding-left: 10px;
+    }
+    .cart-total-delete-div{
+        flex-direction: column;
+    }
+    .content-div h1{
+        max-width: 600px;
+        font-size: 40px;
+    }
+    .product-container{
+        gap:20px;
+    }
+}
+
+/* animations */
+
+.animation {
+    opacity: 0;
+    transform: translateX(-300px);
+    transition: all 0.7s ease-out;
+    /* transition-delay: 0.4s; */
+
+}
+
+.scroll-animation {
+    opacity: 1;
+    transform: translateX(0);
+}
