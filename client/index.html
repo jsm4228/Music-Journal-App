@@ -4,65 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Computers</title>
+    <title></title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="../server.js"></script>
-    <script type="text/javascript" src="bower_components/chance/chance.js"></script>
     <script defer src="script.js"></script>
     <!-- <script defer src="shoppingCart.js"></script> -->
 </head>
 
     <header>
-        <section id="cart-container">
-            <img id="cart" src="images/cart.png" alt="">
-        </section>
         <section class="animation" id="page-title">
             <div id="page-title-div">
-                <h1 class="page-title">Computers.</h1>
-                <h2 class="page-title">and also tablets.</h2>
+                <h1 class="page-title">DASHBOARD</h1>
+                <h2 class="page-title">Welcome to your Music Journal!</h2>
             </div>
         </section>
     </header>
 
 <body>
-    <div id="page-1">
-        <div class="content-div">
-            <h1 class="animation">Browse our selection.</h1>
-            <div class="button-container">
-                <button class="none">Back</button>
+    
+        <section class="animation" id="upper">
+            <div class="graph-controls">
+                
+                
             </div>
-            
-            <section id="products-sort">
-                <div id="sort-options">
-                    <h3>Sort</h3>
-                    <div class="checkbox-div">
-                        <input type="checkbox" id="computers-box" name="computers-box" value="yes">
-                        <label for="computers-box">Computers</label>
-                    </div>
-                    <div class="checkbox-div" id="tablets-box-div">
-                        <input type="checkbox" id="tablets-box" name="tablets-box" value="yes">
-                        <label for="tablets-box">Tablets</label>
-                    </div>
-                    
-                </div>
-                <div class="animation" id="products-display">
-                </div>
-            </section>
-        </div>
-    </div>
+            <div class="graph">
+                
+                
+            </div>
+        </section>
 
-    <div id="page-2" class="none animation">
-        <h1>Shopping Cart</h1>
-        <button id="cart-back">Back</button>
-        <div id="shopping-cart-container">
-            <div id="cart-products-container"></div>
-            <div id="cart-price-container"></div>
-        </div>
-    </div>
+        <section class="animation" id="lower">
+            <div class="data">
+                
+                
+            </div>
+            <div class="pie">
+                
+                
+            </div>
+        </section>
 </body>
 </html>
