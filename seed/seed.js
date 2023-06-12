@@ -48,17 +48,23 @@ const createSongs = async () => {
 
 const createRandomSessions = async (user) => {
     let sessions = Array(500)
+    let month = 1, day = 1
     for (let index = 0; index < sessions.length; index++) {
-       let randint = Math.floor((Math.random()*songs.length))
-        sessions[index] = await new Session({
-            user_id: user._id,
-            song_id: songs[randint]._id,
-            duration: Math.floor((Math.random()*60)),
-            mood: Math.floor((Math.random()*10)),
-            focus: Math.floor((Math.random()*10)),
-            notes: generate.paragraph(),
-            tempo: Math.floor((Math.random()*150))
-        })
+        let hours = Math.floor((Math.random()*24))
+        
+        let randint = Math.floor((Math.random()*songs.length))
+            sessions[index] = await new Session({
+                user_id: user._id,
+                song_id: songs[randint]._id,
+                duration: Math.floor((Math.random()*60)),
+                mood: Math.floor((Math.random()*10)),
+                focus: Math.floor((Math.random()*10)),
+                notes: generate.paragraph(),
+                tempo: Math.floor((Math.random()*150)),
+                date: new Date(2022, month, day, hours)
+            })
+        if (index%2==0) {day+=1}
+        if (index > 60) {month+=1; day=0}
         
     }
         

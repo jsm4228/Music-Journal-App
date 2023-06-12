@@ -8,9 +8,9 @@ const sessionSchema = new Schema(
         duration: { type: Number, required: true },
         mood: { type: Number, required: true },
         focus: { type: Number, required: true },
-        duration: { type: Number, required: true },
         notes: { type: String, required: true },
         tempo: { type: Number, required: true },
+        date: { type: Date, required: true },
     }, 
     { timestamps: true }
 )
