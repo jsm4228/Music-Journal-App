@@ -42,6 +42,26 @@ const getAllSessions = async (req, res) => {
     }
 }
 
+const updateAttribute = async (req, res) => {
+    try {
+        let id  = req.params.id
+        let attribute = req.params.attribute
+        const session = await Session.findById(id)
+        session[attribute] = Number(req.params.value)
+        session.save()
+        console.log(session)
+        res.send(session)
+
+    } catch(e) {
+        console.log(e.message)
+        res.send(e.message)
+    }
+    
+
+
+
+}
+
 // const clearCart = async (req, res) => {
 //     try {
 //         //db.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -54,6 +74,7 @@ const getAllSessions = async (req, res) => {
 // }
 
 module.exports = {
-    getAllSessions
+    getAllSessions,
+    updateAttribute
 }
 

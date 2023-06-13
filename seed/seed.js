@@ -41,14 +41,13 @@ const createSongs = async () => {
         songs[index] = await getSongs(url)
     
     })
-    console.log(songs)
     await Song.insertMany(songs)
     
 }
 
 
 const createRandomSessions = async (user) => {
-    let sessions = Array(10)
+    let sessions = Array(500)
     let month = 1, day = 1
     for (let index = 0; index < sessions.length; index++) {
         let hours = Math.floor((Math.random()*24))
@@ -66,7 +65,6 @@ const createRandomSessions = async (user) => {
             })
         if (index%2==0) {day+=1}
         if (index > 60) {month+=1; day=0}
-        console.log(await Song.findById(songs[randint]._id))
         
     }
         
@@ -78,9 +76,9 @@ const main = async () => {
     //create empty array pf songs
     await createSongs()
     await createRandomSessions(new User({user_id: 'josh'}))
-    console.log(await Session.findById('6488870320efa2e4cb65ebfa'))
-    //await Session.deleteMany()
-    //await Song.deleteMany()
+    
+    // await Session.deleteMany()
+    // await Song.deleteMany()
 }
 
 const run = async () => {

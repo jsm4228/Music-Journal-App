@@ -3,6 +3,6 @@ const controller = require(`../controllers/sessionController`)
 
 Router
     .get(`/`, controller.getAllSessions)
-    //.get(`/:song`, controller.getSessionBySong)
+    .post(`/:id/:attribute/:value`, controller.updateAttribute)
 
 module.exports = Router

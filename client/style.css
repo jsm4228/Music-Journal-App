@@ -55,7 +55,7 @@ h1{
     background: #BADADE;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    box-shadow: 10px 10px 5px lightblue ;
+    
 }
 .graph, .pie{
     width: 604px;
@@ -64,13 +64,13 @@ h1{
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
     margin: auto;
-    box-shadow: 10px 10px 5px lightblue ;
+    
     
 }
 
 .data {
-    width: 638px;
-    height: 300px;
+    width: 800px;
+    height: 400px;
 }
 .pie {
     width: 284px;
@@ -81,14 +81,23 @@ h1{
 .data-entry{
     display: flex;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    width: 610px;
+    width: 100%;
     height: 17px;
     background: #85B6C6;
 }
 
 .data-attr{
-    flex-grow: 1;
-    padding: 20px;
+    /* flex-grow: 1; */
+    
+    width: 133px;
+    height: 17px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#headerTitle {
+    margin: 0px;
 }
 
 /* animations */

@@ -1,13 +1,15 @@
 // Load data to Data Div, append Divs as needed
 
 
-const databaseDiv = document.querySelector('.data')
-let newDiv = document.createElement('div')
-newDiv.classList.add('data-entry')
-databaseDiv.appendChild(newDiv)
-newDiv = document.createElement('div')
-newDiv.classList.add('data-entry')
-databaseDiv.appendChild(newDiv)
+const saveToDatabase = async(id) => {
+    console.log(id)
+    let attribute = id.substring(0, id.indexOf('-'))
+    let object_id = id.substring(id.indexOf('-')+1)
+    let value = document.querySelector(`#${id}`).innerText
+    console.log(object_id, attribute, value)
+
+    await axios.post(`http://localhost:3001/api/session/${object_id}/${attribute}/${value}`)
+}
 
 
 const loadData = async () => {
@@ -27,12 +29,28 @@ const loadData = async () => {
         databaseDiv.appendChild(dataEntryDiv)
 
         for (const property in entry) {
-            if(property!='user_id' && property!='_id'){
+            if(property!='user_id' && property!='_id' && property!='updatedAt' && property!='createdAt' && property!='__v' && property!='notes'){
                 dataAttrDiv = document.createElement('div')
                 dataAttrDiv.classList.add('data-attr')
+                dataAttrDiv.id = `${property}-${entry._id}`
+                dataAttrDiv.contentEditable = true
+                
+                let id = dataAttrDiv.id
+                //allows the enter key to save the new data in the attribute
+                dataAttrDiv.addEventListener("keydown", async (event)=>{
+                    if (event.key === "Enter") {
+                      event.preventDefault() // Prevents line break
+                      // Call your save function here
+                    //   const boundSaveToDatabase = saveToDatabase.bind(this)
+                    //   await boundSaveToDatabase()
+                    
+                    await saveToDatabase(id)
+                    }
+                  })
+
                 dataEntryDiv.appendChild(dataAttrDiv)
-                console.log(entry.song_id)
                 property=='song_id' ? dataAttrDiv.innerText = entry[property].song_name : dataAttrDiv.innerText = entry[property]
+            
             }   
         }
 
