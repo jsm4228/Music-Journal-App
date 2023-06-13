@@ -54,15 +54,17 @@ h1{
     height: 152px;  
     background: #BADADE;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px lightblue ;
 }
 .graph, .pie{
     width: 604px;
     height: 237px;
     background: #BADADE;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
+    border-radius: 10px;
     margin: auto;
+    box-shadow: 10px 10px 5px lightblue ;
     
 }
 
@@ -74,6 +76,21 @@ h1{
     width: 284px;
     height: 300px;
 }
+
+
+.data-entry{
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    width: 610px;
+    height: 17px;
+    background: #85B6C6;
+}
+
+.data-attr{
+    flex-grow: 1;
+    padding: 20px;
+}
+
 /* animations */
 
 .animation {

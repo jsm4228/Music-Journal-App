@@ -4,7 +4,7 @@ const { Schema } = require('mongoose')
 const sessionSchema = new Schema(
     {
         user_id: { type: Schema.Types.ObjectId, ref: 'User' },
-        song_id: { type: Schema.Types.ObjectId, ref: 'Song' },
+        song_id: { type: Object, required: true },
         duration: { type: Number, required: true },
         mood: { type: Number, required: true },
         focus: { type: Number, required: true },
