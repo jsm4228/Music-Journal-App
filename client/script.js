@@ -1,4 +1,9 @@
 // Load data to Data Div, append Divs as needed
+//const Chart = require(`chart.js`)
+
+// import { Chart } from "chart.js"
+
+// const chart = require("./visual.js")
 
 
 const saveToDatabase = async(id) => {
@@ -64,7 +69,64 @@ loadData()
 
 
 
+//data visualization section 
 
+const ctx = document.querySelector('#line-graph').getContext('2d')
+const labels = ['2001', '2003', '2005']
+const data = {
+    labels,
+    datasets: [
+        {
+            data: [4, 5, 6],
+            label: `dummy`
+        },
+    ],
+};
+
+
+const config = {
+    type: "line",
+    data: data,
+    options: {
+        responsive: true
+    },
+};
+// const graph = new Chart(ctx, config)
+
+// const getAttributes = async (attribute) => {
+//     let data = await axios.get(`http://localhost:3001/api/session/${attribute}`)
+//     return data 
+// }
+
+// //get data for y axis
+// const displayGraph = async (X, Y) => {
+    
+//     const labels = await getAttributes(X)
+//     let labels_data = labels.data
+//     const X_data = await getAttributes(Y)
+//     const data = {
+//         labels_data,
+//         datasets: [
+//             {
+//                 data: X_data.data,
+//                 label: `${X}vs${Y}`
+//             },
+//         ],
+//     }
+
+//     const config = {
+//         type: 'line',
+//         data: data,
+//         options: {
+//             responsive: true
+//         }
+//     }
+//     console.log(labels.data, X_data.data)
+//     const graph = new Chart(ctx, config)
+    
+// }
+
+//displayGraph("date", 'duration')
 
 
 
@@ -104,3 +166,5 @@ for (let i in scrollAnim) {
     const elements = scrollAnim[i]
     observer.observe(elements)
 } 
+
+

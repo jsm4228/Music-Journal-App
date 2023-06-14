@@ -56,11 +56,23 @@ const updateAttribute = async (req, res) => {
         console.log(e.message)
         res.send(e.message)
     }
-    
-
-
-
 }
+
+const getColumn = async (req, res) => {
+    try {
+        let attribute = req.params.attribute
+        let data = await Session.find()
+        let attributes = []
+        data.forEach((object) => {
+            attributes.push(object[attribute])
+        })
+        res.send(attributes)
+    } catch(e) {
+        res.send(e.message)
+    }
+}
+
+
 
 // const clearCart = async (req, res) => {
 //     try {
@@ -75,6 +87,7 @@ const updateAttribute = async (req, res) => {
 
 module.exports = {
     getAllSessions,
-    updateAttribute
+    updateAttribute,
+    getColumn
 }
 
