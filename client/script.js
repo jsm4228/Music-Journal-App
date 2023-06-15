@@ -72,61 +72,66 @@ loadData()
 //data visualization section 
 
 const ctx = document.querySelector('#line-graph').getContext('2d')
-const labels = ['2001', '2003', '2005']
-const data = {
-    labels,
-    datasets: [
-        {
-            data: [4, 5, 6],
-            label: `dummy`
-        },
-    ],
-};
+let graph
+const getAttributes = async (attribute) => {
+    let data = await axios.get(`http://localhost:3001/api/session/${attribute}`)
+    return data 
+}
 
+//get data for y axis
+const displayGraph = async (X, Y) => {
+    let show
+    X=='date' ? show=false : show=true
+    const labels = await getAttributes(X)
+    let labels_data = labels.data
+    const X_data = await getAttributes(Y)
+    const data = {
+        labels: labels_data,
+        datasets: [
+            {
+                data: X_data.data,
+                label: `${X} vs. ${Y}`
+            },
+        ],
+    }
 
-const config = {
-    type: "line",
-    data: data,
-    options: {
-        responsive: true
-    },
-};
-// const graph = new Chart(ctx, config)
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                  display: show // Hide x-axis labels
+                },
+                y: {
+                  display: true // Hide y-axis labels
+                }
+              }
+        }
+    }
+    console.log(labels_data, X_data.data)
 
-// const getAttributes = async (attribute) => {
-//     let data = await axios.get(`http://localhost:3001/api/session/${attribute}`)
-//     return data 
-// }
-
-// //get data for y axis
-// const displayGraph = async (X, Y) => {
+    graph = new Chart(ctx, config)
+   //return config
     
-//     const labels = await getAttributes(X)
-//     let labels_data = labels.data
-//     const X_data = await getAttributes(Y)
-//     const data = {
-//         labels_data,
-//         datasets: [
-//             {
-//                 data: X_data.data,
-//                 label: `${X}vs${Y}`
-//             },
-//         ],
-//     }
+}
 
-//     const config = {
-//         type: 'line',
-//         data: data,
-//         options: {
-//             responsive: true
-//         }
-//     }
-//     console.log(labels.data, X_data.data)
-//     const graph = new Chart(ctx, config)
-    
-// }
+const generateButton = document.querySelector('#generate-graph')
+generateButton.addEventListener('click', () => {
+    // document.querySelector('#line-graph').destroy()
 
-//displayGraph("date", 'duration')
+    if (typeof graph !== 'undefined') {
+        // Destroy the existing chart
+        graph.destroy();
+      }
+
+    let x = document.querySelector('#x-attr').value
+    let y = document.querySelector('#y-attr').value
+    displayGraph(x, y)
+    //const graph = new Chart(ctx, config)
+})
+
 
 
 

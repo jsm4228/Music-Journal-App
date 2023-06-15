@@ -14,12 +14,13 @@
     <script src="../server.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
     <!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.js" integrity="sha512-L6yov5P1r9QnZX2ZRiq+XBLsm1GQ38zfSDJ6gy3pKmPCqkWvK2nz8Ojlju9q36+zOsMmMB+hYgGrJtJWo4Gy/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="script.js"></script>
     <!-- <script defer src="shoppingCart.js"></script> -->
 </head>
 
     <header>
-        <section class="animation" id="page-title">
+        <section id="page-title">
             <div id="page-title-div">
                 <h1 class="page-title">DASHBOARD</h1>
                 <h2 class="page-title">Welcome to your Music Journal!</h2>
@@ -29,9 +30,11 @@
 
 <body>
     <div class="dashboards">
-        <section class="animation" id="upper">
+        <section id="upper">
             <div class="graph-controls">
-                
+                <input id="x-attr" type="text" placeholder="Enter X Attribute">
+                <input id="y-attr" type="text" placeholder="Enter Y Attribute">
+                <button id="generate-graph">Go!</button>
                 
             </div>
             <div class="graph">
@@ -41,7 +44,7 @@
             </div>
         </section>
 
-        <section class="animation" id="lower">
+        <section id="lower">
             <div class="data" style="overflow-y:scroll">
                 <div class="data-entry">
                     <div class="data-attr" id="headerTitle">Song</div>
