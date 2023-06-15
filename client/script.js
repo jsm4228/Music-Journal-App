@@ -72,7 +72,9 @@ loadData()
 //data visualization section 
 
 const ctx = document.querySelector('#line-graph').getContext('2d')
+const piectx = document.querySelector('#pie-graph').getContext('2d')
 let graph
+let graph_type = 'line'
 const getAttributes = async (attribute) => {
     let data = await axios.get(`http://localhost:3001/api/session/${attribute}`)
     return data 
@@ -83,7 +85,7 @@ const displayGraph = async (X, Y) => {
     let show
     X=='date' ? show=false : show=true
     const labels = await getAttributes(X)
-    let labels_data = labels.data
+    let labels_data = labels.data.sort()
     const X_data = await getAttributes(Y)
     const data = {
         labels: labels_data,
@@ -96,7 +98,7 @@ const displayGraph = async (X, Y) => {
     }
 
     const config = {
-        type: 'line',
+        type: document.querySelector('#select-graph').value,
         data: data,
         options: {
             responsive: true,
@@ -117,6 +119,52 @@ const displayGraph = async (X, Y) => {
     
 }
 
+const displayPieChart = async () => {
+    const apiSongs = await getAttributes('song_id')
+    const songs = apiSongs.data
+    const apiDurations = await getAttributes('duration')
+    const durations = apiDurations.data
+
+    const song_names = []
+    let duration_times = []
+    songs.forEach((song, index) => {
+         if (song_names.indexOf(song.song_name) == -1)
+        {
+            song_names.push(song.song_name)
+            duration_times.push(durations[index])
+        } else {
+            duration_times[song_names.indexOf(song.song_name)]+=durations[index]
+        }
+    })
+    console.log(song_names, duration_times)
+       
+    const data = {
+        labels: song_names,
+        datasets: [{
+          label: 'Time spent playing Songs',
+          data: duration_times,
+          backgroundColor: [
+            'rgb(52, 235, 207)',
+            'rgb(180, 204, 200)',
+            'rgb(67, 145, 101)',
+            'rgb(26, 31, 28)',
+            'rgb(34, 50, 99)',
+            'rgb(91, 128, 240)',
+            'rgb(92, 93, 97)',
+            'rgb(117, 92, 153)'
+          ],
+          hoverOffset: 4
+        }]
+      };
+
+    const config = {
+        type: 'doughnut',
+        data: data,
+      };
+      pieGraph = new Chart(piectx, config)
+
+}
+displayPieChart()
 const generateButton = document.querySelector('#generate-graph')
 generateButton.addEventListener('click', () => {
     // document.querySelector('#line-graph').destroy()
@@ -128,9 +176,27 @@ generateButton.addEventListener('click', () => {
 
     let x = document.querySelector('#x-attr').value
     let y = document.querySelector('#y-attr').value
+    console.log(x)
     displayGraph(x, y)
     //const graph = new Chart(ctx, config)
 })
+
+const form = document.getElementById('select-graph');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent form submission
+
+  // Access selected option value
+  const selectedOption = form.elements['select-graph'].value;
+
+  // Perform desired actions with the selected option value
+  graph_type = selectedOption
+  console.log(selectedOption)
+  // Additional code here...
+
+  // Submit the form programmatically (if needed)
+  // form.submit();
+});
 
 
 

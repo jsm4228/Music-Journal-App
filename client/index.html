@@ -32,15 +32,43 @@
     <div class="dashboards">
         <section id="upper">
             <div class="graph-controls">
-                <input id="x-attr" type="text" placeholder="Enter X Attribute">
-                <input id="y-attr" type="text" placeholder="Enter Y Attribute">
+
+                <!-- <input id="x-attr" type="text" placeholder="Enter X Attribute">
+                <input id="y-attr" type="text" placeholder="Enter Y Attribute"> -->
+                
+                
+                <form id="myForm">
+                   
+                    <select id="x-attr" class="control">
+                        <option disabled selected value="">Select an X attribute</option>
+                        <option value="date">Date</option>
+                        <option value="duration">Duration</option>
+                    </select>
+                </form>
+                <form id="myForm">
+                    
+                    <select id="y-attr" class="control">
+                        <option disabled selected value="">Select an Y attribute</option>
+                        <option value="mood">Mood</option>
+                        <option value="duration">Duration</option>
+                        <option value="focus">Focus</option>
+                        <option value="tempo">Tempo</option>
+                    </select>
+                </form>
+                <form id="myForm">
+                    <select id="select-graph" class="control">
+                        <option value="line">Line</option>
+                        <option value="bar">Bar</option>
+                        <option value="scatter">Scatter</option>
+                    </select>
+                </form>
                 <button id="generate-graph">Go!</button>
                 
             </div>
             <div class="graph">
-                
-                <canvas id="line-graph"></canvas>
-                
+                <div class="chart">
+                    <canvas id="line-graph"></canvas>
+                </div>
             </div>
         </section>
 
@@ -58,7 +86,7 @@
                 
             </div>
             <div class="pie">
-                
+                <canvas id="pie-graph"></canvas>
                 
             </div>
         </section>
