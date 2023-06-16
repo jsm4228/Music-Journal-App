@@ -1,55 +1,47 @@
-const { Computer } = require(`../models`)
+const { Song } = require(`../models`)
 
-const getAllComputers = async(req,res)=>{
-    try{
-        const computers = await Computer.find()
-        res.status(200).json(computers)
-    } catch(e){
-        res.status(400).send(e.message)
-    }
-}
 
-const getComputerByName = async(req,res)=>{
-    try{
-        let searchKey = new RegExp(req.params.name, `i`)
-        const computer = await Computer.find({name: searchKey})
-        if (!computer) throw Error(`computer not found`)
-        res.status(200).json(computer)
-    } catch(e){
-        res.status(400).send(e.message)
-    }
-}
 
-const createComputer = async (req,res)=> {
-    try {
-        const { name, price, image } = req.params
-        const newComputer = new Computer({
-            name: name,
-            price: price,
-            image: image,
-            specs: {
-              Weight: '1700g',
-              Dimensions: '280.6 x 214.9 x 6.4mm',
-              OS: 'Windows 11',
-              screenSize: '17.3-inch',
-              Resolution: '1920 x 1080 pixels',
-              CPU: 'Intel Core i7',
-              Storage: '128GB/256GB/512GB/1TB/2TB',
-              microSDSlot: 'No',
-              Battery: 'Up to 12 hours',
-              RearCamera: '12MP + 10MP + LiDAR',
-              FrontCamera: '12MP',
 
-            }
+const getSongs= async (url) => {
+    let startIndex = url.indexOf('tab/') + 4; // Adding 4 to skip 'tab/'
+    let endIndex = url.indexOf('/', startIndex); // the second parameter is starting index to search from
+    let artist_name = url.substring(startIndex, endIndex).replace(/-/g, ' ');
+
+    startIndex = endIndex+=1
+    endIndex = url.indexOf('-chords', startIndex)
+    let song_name = url.substring(startIndex, endIndex).replace(/-/g, ' ');
+
+
+    return new Song({
+        song_name: song_name,
+        artist_name: artist_name,
+        guitar_tab_url: url
     })
+}
+const createSongs = async (req, res) => {
+  
+    let url = req.params.tabs_url
+        song = await getSongs(url)
+    
+    
+    let songObj = await Song.insertMany(song)
+    res.send(songObj)
+    
+}
 
-    } catch(e) {
+const getSongbyName = async(req, res) => {
+    let song = await Song.findOne({"song_name": req.params.song})
+    res.send(song)
+}
 
-    }
+
+const updateSongName = async(req, res) => {
+    await Song.findByIdAndUpdate(req.params.id, {'song_name': req.params.new_song})
+    res.send('done')
 }
 
 module.exports = {
-    getAllComputers,
-    getComputerByName,
-    createComputer
+    createSongs,
+    getSongbyName
 }

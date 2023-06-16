@@ -1,9 +1,10 @@
 const Router = require(`express`).Router()
 const controller = require(`../controllers/songController`)
 
-// Router
-//     .post(`/addItem/:id`, controller.addProduct)
-//     .post(`/clearCart`, controller.clearCart)
-//     .get(`/getAllProducts`, controller.getAllProducts)
+Router
+     .post(`/:tabs_url`, controller.createSongs)
+      .get(`/:song`, controller.getSongbyName)
+    //  .post(`/:id/:new_song`, controller.updateSongName)
+    //  .delete('/:id', controller.deleteSong)
 
 module.exports = Router
